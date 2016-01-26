@@ -34,7 +34,7 @@ public class PersonDetailFragment extends Fragment {
     public static final String ARG_ITEM_ID = "item_id";
 
     /**
-     * The dummy content this fragment is presenting.
+     * The content this fragment is presenting.
      */
     private Person mItem;
 
@@ -69,16 +69,15 @@ public class PersonDetailFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.person_detail, container, false);
 
         if (mItem != null) {
-            ((TextView) rootView.findViewById(R.id.person_detail_name_text)).setText("Name: " + mItem.name);
-            ((ImageView)rootView.findViewById(R.id.person_detail_icon)).setImageDrawable(mItem.icon);
+            // TextView textView = (TextView) rootView.findViewById(R.id.person_detail_name_text);
+            // textView.setText("Name: " + mItem.name);
+            // ((ImageView)rootView.findViewById(R.id.person_detail_icon)).setImageDrawable(mItem.icon);
         }
         ListView list = (ListView)rootView.findViewById(R.id.children_listView);
 
         List<String> childrenNames = mItem.childrenNames;
-        ArrayAdapter<String> adaptor = new ArrayAdapter<String>(getContext(),
+        ArrayAdapter<String> adaptor = new ArrayAdapter<>(getContext(),
                 android.R.layout.simple_list_item_1, android.R.id.text1, childrenNames);
-   //     StableArrayAdapter adaptor = new StableArrayAdapter(getContext(), android.R.layout.simple_list_item_1, mItem.childrenNames);
-      //  StableArrayAdapter adaptor = new StableArrayAdapter(getContext(),R.layout.activity_person_detail, R.id.children_listView, mItem.childrenNames);
         list.setAdapter(adaptor);
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -95,7 +94,7 @@ public class PersonDetailFragment extends Fragment {
     }
 
     public static class StableArrayAdapter extends ArrayAdapter<String> {
-        HashMap<String, Integer> mIdMap = new HashMap<String, Integer>();
+        HashMap<String, Integer> mIdMap = new HashMap<>();
         public StableArrayAdapter(Context context, int resource,
                                   List<String> objects) {
             super(context, resource, objects);
@@ -106,8 +105,7 @@ public class PersonDetailFragment extends Fragment {
 
         @Override
         public int getCount() {
-            int count = super.getCount();
-            return count;
+            return super.getCount();
         }
 
         @Override

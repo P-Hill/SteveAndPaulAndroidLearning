@@ -1,31 +1,42 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/person_detail"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:theme="@style/AppTheme.NoActionBar"
+              >
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/person_detail_name_text"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Medium Text"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:orientation="horizontal"
+            android:layout_margin="@dimen/text_margin"
+            android:layout_marginEnd="@dimen/text_margin">
+            <TextView
+                android:id="@+id/person_detail_name_text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Medium Size Text?"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+            <TextView
+                android:id="@+id/person_detail_name_text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Large Text?"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+<!--
 
-        <ImageView
-            android:id="@+id/person_detail_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+                        <ImageView
+                            android:id="@+id/person_detail_icon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            />
 
-    </LinearLayout>
+                -->
+        </LinearLayout>
 
     <ListView
         android:id="@+id/children_listView"

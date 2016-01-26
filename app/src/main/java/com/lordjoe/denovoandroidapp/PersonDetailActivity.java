@@ -1,6 +1,7 @@
 package com.lordjoe.denovoandroidapp;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -10,13 +11,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
 
+import layout.BlankFragment;
+
 /**
  * An activity representing a single Person detail screen. This
  * activity is only used narrow width devices. On tablet-size devices,
  * item details are presented side-by-side with a list of items
  * in a {@link PersonListActivity}.
  */
-public class PersonDetailActivity extends AppCompatActivity {
+public class PersonDetailActivity extends AppCompatActivity implements BlankFragment.OnFragmentInteractionListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,16 +52,28 @@ public class PersonDetailActivity extends AppCompatActivity {
         //
         // http://developer.android.com/guide/components/fragments.html
         //
+//        if (savedInstanceState == null) {
+//            // Create the detail fragment and add it to the activity
+//            // using a fragment transaction.
+//            Bundle arguments = new Bundle();
+//            arguments.putString(PersonDetailFragment.ARG_ITEM_ID,
+//                    getIntent().getStringExtra(PersonDetailFragment.ARG_ITEM_ID));
+//            PersonDetailFragment fragment = new PersonDetailFragment();
+//            fragment.setArguments(arguments);
+//            getSupportFragmentManager().beginTransaction()
+//                    .add(R.id.person_detail, fragment)
+//                    .commit();
+//        }
         if (savedInstanceState == null) {
             // Create the detail fragment and add it to the activity
             // using a fragment transaction.
             Bundle arguments = new Bundle();
-            arguments.putString(PersonDetailFragment.ARG_ITEM_ID,
-                    getIntent().getStringExtra(PersonDetailFragment.ARG_ITEM_ID));
-            PersonDetailFragment fragment = new PersonDetailFragment();
+            arguments.putString(BlankFragment.ARG_PARAM1,
+                    getIntent().getStringExtra(BlankFragment.ARG_PARAM1));
+            BlankFragment fragment = new BlankFragment();
             fragment.setArguments(arguments);
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.person_detail, fragment)
+                    .add(R.id.person_detail_container, fragment)
                     .commit();
         }
     }
@@ -78,4 +93,9 @@ public class PersonDetailActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+@Override
+public void onFragmentInteraction(Uri uri) {
+
+}
 }
